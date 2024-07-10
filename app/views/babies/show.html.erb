@@ -1,0 +1,6 @@
+<h1><%= @baby.name %></h1>
+<p>Birth Date: <%= @baby.birth_date %></p>
+<p>Height: <%= @baby.height %> cm</p>
+<p>Weight: <%= @baby.weight %> kg</p>
+<%= link_to 'Edit', edit_baby_path(@baby) %> |
+<%= link_to 'Back', babies_path %>

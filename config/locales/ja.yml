@@ -1,0 +1,64 @@
+ja:
+  hello: "こんにちは"
+  home:
+    welcome: "ようこそ、%{name}さん！"
+    add_baby: "赤ちゃんを追加"
+    baby_info: "赤ちゃんの情報"
+    no_babies: "まだ赤ちゃんが追加されていません。"
+    recent_activities: "最近の活動"
+    feedings: "授乳"
+    no_feedings: "最近の授乳記録はありません。"
+    diaper_changes: "おむつ交換"
+    no_diaper_changes: "最近のおむつ交換記録はありません。"
+    sign_up: "サインアップ"
+    login: "ログイン"
+    logout: "ログアウト"
+    view_details: "詳細を見る"
+    add_feeding: "授乳を追加"
+    add_diaper_change: "おむつ交換を追加"
+    view_diary: "日記を見る"
+    baby_height: "身長: %{height} cm"
+    baby_weight: "体重: %{weight} kg"
+    born_on: "%{date}生まれ"
+  activerecord:
+    models:
+      baby: "赤ちゃん"
+      feeding: "授乳"
+      diaper_change: "おむつ交換"
+      diary: "日記"
+      user: "ユーザー"
+    attributes:
+      baby:
+        name: "名前"
+        birth_date: "誕生日"
+        height: "身長"
+        weight: "体重"
+      feeding:
+        feeding_time: "授乳時間"
+        amount: "量"
+      diaper_change:
+        change_time: "交換時間"
+        type: "タイプ"
+      diary:
+        entry_date: "記録日"
+        content: "内容"
+        photo: "写真"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        current_password: "現在のパスワード"
+  devise:
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      invalid: "メールアドレスまたはパスワードが無効です。"
+    registrations:
+      signed_up: "サインアップしました。"
+      updated: "アカウント情報を更新しました。"
+      destroyed: "アカウントを削除しました。"
+  errors:
+    messages:
+      blank: "を入力してください"
+      taken: "は既に使用されています"
