@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BabyCareApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to t('home.welcome', name: current_user.nickname), root_path %></li>
+          <% @babies.each do |baby| %>
+            <li><%= link_to t('home.add_feeding'), new_baby_feeding_path(baby) %></li>
+            <li><%= link_to t('home.add_diaper_change'), new_baby_diaper_change_path(baby) %></li>
+            <li><%= link_to t('home.view_diary'), baby_diaries_path(baby) %></li>
+          <% end %>
+          <li><%= link_to t('home.logout'), destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to t('home.home'), root_path %></li>
+          <li><%= link_to t('home.sign_up'), new_user_registration_path %></li>
+          <li><%= link_to t('home.login'), new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <% if user_signed_in? %>
+      <h1><%= t('home.welcome', name: current_user.nickname) %></h1>
+      <section>
+        <h2><%= t('home.baby_info') %></h2>
+        <% if @babies.any? %>
+          <ul>
+            <% @babies.each do |baby| %>
+              <li>
+                <h3><%= baby.name %> (<%= t('home.born_on', date: baby.birth_date.strftime('%Y年%m月%d日')) %>)</h3>
+                <p><%= t('home.baby_height', height: baby.height) %></p>
+                <p><%= t('home.baby_weight', weight: baby.weight) %></p>
+                <%= link_to t('home.view_details'), baby_path(baby) %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p><%= t('home.no_babies') %></p>
+          <%= link_to t('home.add_baby'), new_baby_path %>
+        <% end %>
+      </section>
+
+      <section>
+        <h2><%= t('home.recent_activities') %></h2>
+        <h3><%= t('home.feedings') %></h3>
+        <% if @babies.any? && @babies.first.feedings.any? %>
+          <ul>
+            <% @babies.first.feedings.order(created_at: :desc).limit(5).each do |feeding| %>
+              <li><%= feeding.feeding_time.strftime('%Y年%m月%d日 %H:%M') %>: <%= feeding.amount %> ml</li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p><%= t('home.no_feedings') %></p>
+        <% end %>
+
+        <h3><%= t('home.diaper_changes') %></h3>
+        <% if @babies.any? && @babies.first.diaper_changes.any? %>
+          <ul>
+            <% @babies.first.diaper_changes.order(created_at: :desc).limit(5).each do |change| %>
+              <li><%= change.change_time.strftime('%Y年%m月%d日 %H:%M') %>: <%= change.change_type %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p><%= t('home.no_diaper_changes') %></p>
+        <% end %>
+      </section>
+    <% else %>
+      <h1>BabyCareAppへようこそ</h1>
+      <p>赤ちゃんの成長と活動を記録するには、サインアップまたはログインしてください。</p>
+    <% end %>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 BabyCareApp. All rights reserved.</p>
+  </footer>
+</body>
+</html>

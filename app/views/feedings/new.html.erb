@@ -1,0 +1,19 @@
+<h1>授乳記録を追加</h1>
+
+<%= form_with(model: [@baby, @feeding], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :feeding_time, '授乳時間' %>
+    <%= form.datetime_select :feeding_time, order: [:year, :month, :day] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount, '量 (ml)' %>
+    <%= form.number_field :amount %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to '戻る', baby_feedings_path(@baby) %>

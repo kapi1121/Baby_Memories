@@ -1,0 +1,19 @@
+<h1>おむつ交換記録を追加</h1>
+
+<%= form_with(model: [@baby, @diaper_change], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :change_time, '交換時間' %>
+    <%= form.datetime_select :change_time, order: [:year, :month, :day] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :change_type, 'タイプ' %>
+    <%= form.select :change_type, options_for_select([['濡れ', 'wet'], ['汚れ', 'dirty']]) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to '戻る', baby_diaper_changes_path(@baby) %>

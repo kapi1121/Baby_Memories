@@ -1,5 +1,6 @@
 class DiaperChange < ApplicationRecord
   belongs_to :baby
 
-  validates :type, inclusion: { in: ['wet', 'dirty'] }
+  validates :change_time, presence: true
+  validates :change_type, presence: true, inclusion: { in: ['wet', 'dirty'] }
 end

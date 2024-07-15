@@ -1,0 +1,36 @@
+<h1>日記を追加</h1>
+
+<%= form_with(model: [@baby, @diary], local: true) do |form| %>
+  <% if @diary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
+
+      <ul>
+        <% @diary.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= form.label :entry_date, '日付' %>
+    <%= form.date_select :entry_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, '内容' %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo, '写真' %>
+    <%= form.file_field :photo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to '戻る', baby_diaries_path(@baby) %>

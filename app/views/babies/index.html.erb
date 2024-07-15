@@ -1,0 +1,11 @@
+<h1>My Babies</h1>
+
+<%= link_to 'Add Baby', new_baby_path %>
+
+<ul>
+  <% @babies.each do |baby| %>
+    <li>
+      <%= link_to baby.name, baby_path(baby) %>
+    </li>
+  <% end %>
+</ul>
