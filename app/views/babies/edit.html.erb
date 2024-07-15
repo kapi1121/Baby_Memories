@@ -17,7 +17,7 @@
 
   <div class="field">
     <%= form.label :birth_date %>
-    <%= form.date_select :birth_date %>
+    <%= form.datetime_select :birth_date, order: [:year, :month, :day] %>
   </div>
 
   <div class="field">

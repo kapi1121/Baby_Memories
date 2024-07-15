@@ -1,0 +1,26 @@
+<h1>授乳記録</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>授乳時間</th>
+      <th>量 (ml)</th>
+      <th>アクション</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @feedings.each do |feeding| %>
+      <tr>
+        <td><%= l(feeding.feeding_time, format: :long) %></td>
+        <td><%= feeding.amount %></td>
+        <td>
+          <%= link_to '編集', edit_baby_feeding_path(@baby, feeding) %> |
+          <%= link_to '削除', baby_feeding_path(@baby, feeding), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '新しい授乳記録を追加', new_baby_feeding_path(@baby) %>
+<%= link_to '戻る', baby_path(@baby) %>
