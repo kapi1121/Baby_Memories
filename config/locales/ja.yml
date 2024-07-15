@@ -62,4 +62,19 @@ ja:
     messages:
       blank: "を入力してください"
       taken: "は既に使用されています"
-  
+  date:
+    formats:
+      default: "%Y年%m月%d日"
+    order:
+      - :year
+      - :month
+      - :day
+  time:
+    formats:
+      default: "%Y年%m月%d日 %H:%M"
+      short: "%m/%d %H:%M"
+      long: "%Y年%m月%d日 %H:%M"
+  helpers:
+    submit:
+      create: "作成"
+      update: "更新"

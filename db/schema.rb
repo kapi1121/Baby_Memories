@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_08_162307) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_15_055337) do
   create_table "advices", charset: "utf8", force: :cascade do |t|
     t.integer "age_months", null: false
     t.text "advice", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_08_162307) do
   create_table "diaper_changes", charset: "utf8", force: :cascade do |t|
     t.bigint "baby_id", null: false
     t.datetime "change_time", null: false
-    t.string "type", null: false
+    t.string "change_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["baby_id"], name: "index_diaper_changes_on_baby_id"

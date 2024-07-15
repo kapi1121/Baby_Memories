@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :babies do
-    resources :feedings, only: [:new, :create, :index]
-    resources :diaper_changes, only: [:new, :create, :index]
-    resources :diaries, only: [:new, :create, :index, :show]
+    resources :feedings
+    resources :diaper_changes
+    resources :diaries
   end
 
   resources :advices, only: [:index, :show]

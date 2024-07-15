@@ -1,0 +1,20 @@
+<h1>日記の詳細</h1>
+
+<p>
+  <strong>日付:</strong>
+  <%= @diary.entry_date %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @diary.content %>
+</p>
+
+<p>
+  <strong>写真:</strong>
+  <%= image_tag @diary.photo.url, class: "diary-photo" if @diary.photo.present? %>
+</p>
+
+<%= link_to '編集', edit_baby_diary_path(@baby, @diary) %> |
+<%= link_to '戻る', baby_diaries_path(@baby) %> |
+<%= link_to '削除', baby_diary_path(@baby, @diary), method: :delete, data: { confirm: '本当に削除しますか？' } %>
