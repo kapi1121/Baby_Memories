@@ -76,3 +76,8 @@ gem 'devise'
 gem 'devise-i18n'
 
 gem 'carrierwave'
+
+gem 'bootstrap', '~> 5.3.0'
+gem 'sassc-rails'
+
+gem 'webpacker', '~> 5.4'

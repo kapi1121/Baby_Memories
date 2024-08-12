@@ -13,8 +13,5 @@
  *= require_tree .
  *= require_self
  */
- .diary-photo {
-  width: 300px; /* 幅を300ピクセルに設定 */
-  height: auto; /* 高さを自動調整 */
-  max-width: 100%; /* 親要素の幅を超えないようにする */
-}
+
+@import "bootstrap";
