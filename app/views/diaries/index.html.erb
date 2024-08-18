@@ -1,8 +1,8 @@
 <h1>日記一覧</h1>
 
-<%= link_to '新しい日記を追加', new_baby_diary_path(@baby) %>
+<%= link_to '新しい日記を追加', new_baby_diary_path(@baby), class: 'btn btn-primary mb-3' %>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>日付</th>
@@ -16,11 +16,15 @@
       <tr>
         <td><%= diary.entry_date %></td>
         <td><%= diary.content %></td>
-        <td><%= image_tag diary.photo.url, class: "diary-photo" if diary.photo.present? %></td>
         <td>
-          <%= link_to '表示', baby_diary_path(@baby, diary) %>
-          <%= link_to '編集', edit_baby_diary_path(@baby, diary) %>
-          <%= link_to '削除', baby_diary_path(@baby, diary), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+          <% if diary.photo.present? %>
+            <%= image_tag diary.photo.url, class: "img-thumbnail diary-photo" %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to '表示', baby_diary_path(@baby, diary), class: 'btn btn-info btn-sm' %>
+          <%= link_to '編集', edit_baby_diary_path(@baby, diary), class: 'btn btn-warning btn-sm' %>
+          <%= link_to '削除', baby_diary_path(@baby, diary), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %>
         </td>
       </tr>
     <% end %>
